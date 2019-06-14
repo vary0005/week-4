@@ -1,7 +1,15 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <el-button @click="openDiag = true" type="primary">Welcome</el-button>
+      <el-dialog :visible.sync="openDiag">
+        <div>
+          <input type="text" v-model="sendTreat">
+        </div>
+        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <NewMessage :treat="SendTreat"/>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
@@ -13,12 +21,17 @@ export default {
   components: {
     HelloWorld,
   },
+  data() {
+    return {
+      openDiag: false,
+    };
+  },
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
